@@ -3,47 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        h1 { color: blue; }
-    </style>
+    <title>Главная страница Вики</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Привет, это мой сайт!</h1>
-    <p>Создан с помощью HTML, CSS и JavaScript на телефоне.</p>
-    <h1>Введите свои данные</h1>
-    <form id="userForm">
-        <label for="name">Имя:</label>
-        <input type="text" id="name" name="name">
-        <button type="submit">Сохранить</button>
-    </form>
+    <header>
+        <img src="logo.png" alt="Логотип сайта" class="logo" onclick="goHome()">
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    </header>
 
-    <h2>Ваше имя:</h2>
-    <p id="displayName">Здесь появится ваше имя</p>
+    <nav id="sideMenu" class="side-menu">
+        <a href="commands.html">Команды</a>
+        <a href="addons.html">Аддоны</a>
+        <a href="juniperscript.html">JuniperScript</a>
+        <a href="about.html">О нас</a>
+    </nav>
 
-    <script>
-        // Получаем элементы
-        const form = document.getElementById('userForm');
-        const nameInput = document.getElementById('name');
-        const displayName = document.getElementById('displayName');
+    <main>
+        <section class="grid-container">
+            <div class="grid-item" onclick="window.location.href='commands.html'">
+                <h2>Команды</h2>
+            </div>
+            <div class="grid-item" onclick="window.location.href='addons.html'">
+                <h2>Аддоны</h2>
+            </div>
+            <div class="grid-item" onclick="window.location.href='juniperscript.html'">
+                <h2>JuniperScript</h2>
+            </div>
+        </section>
+    </main>
 
-        // Проверяем, есть ли сохраненное имя в localStorage при загрузке страницы
-        if (localStorage.getItem('userName')) {
-            displayName.textContent = localStorage.getItem('userName');
-        }
-
-        // Обрабатываем отправку формы
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Останавливаем перезагрузку страницы
-
-            // Сохраняем введенное имя в localStorage
-            const userName = nameInput.value;
-            localStorage.setItem('userName', userName);
-
-            // Выводим имя на странице
-            displayName.textContent = userName;
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
